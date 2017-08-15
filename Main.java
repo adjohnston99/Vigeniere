@@ -15,14 +15,5 @@ public class Main {
 		}
 		
 		new Frame();
-		
-		boolean a = true;
-		boolean b = false;
-		
-		if ((a == true) && (b == false)) {
-			System.out.println("true");
-		} else {
-			
-		}
 	}
 }
