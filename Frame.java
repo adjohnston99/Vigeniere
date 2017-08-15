@@ -1,6 +1,8 @@
 package Vigeniere;
 
 import java.awt.FlowLayout;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -21,6 +23,16 @@ public class Frame extends JFrame implements ActionListener, FocusListener {
 	JButton encryptButton = new JButton("Encrypt");
 	JButton decryptButton = new JButton("Decrypt");
 	
+	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
+	int screenWidth = gd.getDisplayMode().getWidth();
+	int screenHeight = gd.getDisplayMode().getHeight();
+	
+	int frameWidth = (screenWidth/100)*15;
+	int frameHeight = (screenHeight/100)*20;
+	
+	int framePosX = (screenWidth/100)*25;
+	int framePosY = (screenHeight/100)*30;
+	
 	Frame() {
 		
 		encryptButton.addActionListener(this);
@@ -39,8 +51,8 @@ public class Frame extends JFrame implements ActionListener, FocusListener {
 		
 		
 		setLayout(new FlowLayout());
-		setSize(300, 200);
-		setLocation(500, 300);
+		setSize(frameWidth, frameHeight);
+		setLocation(framePosX, framePosY);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
