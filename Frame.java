@@ -1,5 +1,6 @@
 package Vigeniere;
 
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
@@ -35,12 +36,18 @@ public class Frame extends JFrame implements ActionListener, FocusListener {
 	
 	Frame() {
 		
+		System.out.println(screenWidth + ", " + screenHeight);
+		System.out.println(frameWidth + ", " + frameHeight);
+		System.out.println(framePosX + ", " + framePosY);
+		
 		encryptButton.addActionListener(this);
 		decryptButton.addActionListener(this);
 		
 		input.addFocusListener(this);
 		key.addFocusListener(this);
 		output.addFocusListener(this);
+		
+		input.setPreferredSize(new Dimension((screenWidth/100)*5, (screenHeight/100)*5));
 		
 		add(input);
 		add(key);
