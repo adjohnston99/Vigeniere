@@ -34,6 +34,7 @@ public class Frame extends JFrame implements ActionListener, FocusListener {
 	
 	double framePosX = screenWidth*25/100;
 	double framePosY = screenHeight*30/100;
+	
 	double defaultFontSize = screenHeight*50/100; 
 	Font defaultFont = new Font("SansSerif", Font.BOLD, (int) defaultFontSize);
 	
