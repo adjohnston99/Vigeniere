@@ -5,6 +5,9 @@ import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
 import javafx.application.Application;
+import javafx.beans.property.StringProperty;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -13,7 +16,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.FlowPane;
 import javafx.stage.Stage;
 
-public class Frame extends Application implements EventHandler<ActionEvent> {
+public class Frame extends Application implements EventHandler<ActionEvent>, ChangeListener<Boolean> {
 	
 	public static void main(String[] args) {
 		launch(args);
@@ -79,6 +82,10 @@ public class Frame extends Application implements EventHandler<ActionEvent> {
 		encryptButton = new Button("Encrypt");
 		decryptButton = new Button("Decrypt");
 		
+		input.focusedProperty().addListener(this);
+		key.focusedProperty().addListener(this);
+		output.focusedProperty().addListener(this);
+		
 		encryptButton.addEventHandler(ActionEvent.ACTION, this);
 		decryptButton.addEventHandler(ActionEvent.ACTION, this);
 		
@@ -109,28 +116,32 @@ public class Frame extends Application implements EventHandler<ActionEvent> {
 		event.consume();
 	}
 
-	
-//	@Override
-//	public void focusGained(FocusEvent e) {
+//	public void focusGained(FocusEvent event) {
 //		
-//		if ((e.getSource() == input) && (input.getText().equals("Input"))) {
+//		if ((event.getSource() == input) && (input.getText().equals("Input"))) {
 //			input.setText("");
-//		} else if ((e.getSource() == key) && (key.getText().equals("Key"))) {
+//		} else if ((event.getSource() == key) && (key.getText().equals("Key"))) {
 //			key.setText("");
-//		} else if ((e.getSource() == output) && (output.getText().equals("Output"))) {
+//		} else if ((event.getSource() == output) && (output.getText().equals("Output"))) {
 //			output.setText("");
 //		}
 //	}
 //
-//	@Override
-//	public void focusLost(FocusEvent e) {
+//	public void focusLost(FocusEvent event) {
 //		
-//		if ((e.getSource() == input) && (input.getText().equals(""))) {
+//		if ((event.getSource() == input) && (input.getText().equals(""))) {
 //			input.setText("Input");
-//		} else if ((e.getSource() == key) && (key.getText().equals(""))) {
+//		} else if ((event.getSource() == key) && (key.getText().equals(""))) {
 //			key.setText("Key");
-//		} else if ((e.getSource() == output) && (output.getText().equals(""))) {
+//		} else if ((event.getSource() == output) && (output.getText().equals(""))) {
 //			output.setText("Output");
 //		}
 //	}
+	
+	@Override
+	public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+	
+		System.out.println("Focus changed");
+		System.out.println(observable.getClass());
+	}
 }
