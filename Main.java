@@ -14,6 +14,6 @@ public class Main {
 			e.printStackTrace();
 		}
 		
-		new Frame(args);
+		new Frame();
 	}
 }

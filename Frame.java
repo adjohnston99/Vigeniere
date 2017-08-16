@@ -15,9 +15,9 @@ import javafx.stage.Stage;
 
 public class Frame extends Application implements EventHandler<ActionEvent> {
 	
-//	public static void main(String[] args) {
-//		launch(args);
-//	}
+	public static void main(String[] args) {
+		launch(args);
+	}
 	
 	GraphicsDevice gd = GraphicsEnvironment.getLocalGraphicsEnvironment().getDefaultScreenDevice();
 	int screenWidth = gd.getDisplayMode().getWidth();
@@ -32,10 +32,8 @@ public class Frame extends Application implements EventHandler<ActionEvent> {
 	double defaultFontSize = screenHeight*50/100; 
 	Font defaultFont = new Font("SansSerif", Font.BOLD, (int) defaultFontSize);
 	
-	Frame(String[] args) {
-		
-		launch(args);
-		
+//	Frame() {
+//		
 //		System.out.println(screenWidth + ", " + screenHeight);
 //		System.out.println(frameWidth + ", " + frameHeight);
 //		System.out.println(framePosX + ", " + framePosY);
@@ -58,7 +56,7 @@ public class Frame extends Application implements EventHandler<ActionEvent> {
 //		setLocation((int) framePosX, (int) framePosY);
 //		setDefaultCloseOperation(EXIT_ON_CLOSE);
 //		setVisible(true);
-	}
+//	}
 
 	FlowPane componentLayout = new FlowPane();
 	
@@ -91,7 +89,7 @@ public class Frame extends Application implements EventHandler<ActionEvent> {
 		componentLayout.getChildren().add(encryptButton);
 		componentLayout.getChildren().add(decryptButton);
 		
-		Scene appScene = new Scene(componentLayout, 500, 500);
+		Scene appScene = new Scene(componentLayout, frameWidth, frameHeight);
 		
 		primaryStage.setScene(appScene);
 		primaryStage.show();
