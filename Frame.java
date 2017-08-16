@@ -2,6 +2,7 @@ package Vigeniere;
 
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.event.ActionEvent;
@@ -28,11 +29,13 @@ public class Frame extends JFrame implements ActionListener, FocusListener {
 	int screenWidth = gd.getDisplayMode().getWidth();
 	int screenHeight = gd.getDisplayMode().getHeight();
 	
-	int frameWidth = (screenWidth/100)*15;
-	int frameHeight = (screenHeight/100)*20;
+	double frameWidth = screenWidth*15/100;
+	double frameHeight = screenHeight*25/100;
 	
-	int framePosX = (screenWidth/100)*25;
-	int framePosY = (screenHeight/100)*30;
+	double framePosX = screenWidth*25/100;
+	double framePosY = screenHeight*30/100;
+	double defaultFontSize = screenHeight*50/100; 
+	Font defaultFont = new Font("SansSerif", Font.BOLD, (int) defaultFontSize);
 	
 	Frame() {
 		
@@ -47,7 +50,7 @@ public class Frame extends JFrame implements ActionListener, FocusListener {
 		key.addFocusListener(this);
 		output.addFocusListener(this);
 		
-		input.setPreferredSize(new Dimension((screenWidth/100)*5, (screenHeight/100)*5));
+		input.setPreferredSize(new Dimension(screenWidth*5/100, screenHeight*5/100));
 		
 		add(input);
 		add(key);
@@ -58,8 +61,8 @@ public class Frame extends JFrame implements ActionListener, FocusListener {
 		
 		
 		setLayout(new FlowLayout());
-		setSize(frameWidth, frameHeight);
-		setLocation(framePosX, framePosY);
+		setSize((int) frameWidth, (int) frameHeight);
+		setLocation((int) framePosX, (int) framePosY);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		setVisible(true);
 	}
